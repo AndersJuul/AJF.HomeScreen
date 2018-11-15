@@ -1,0 +1,32 @@
+﻿@model AJF.HomeScreen.WebFront.Models.IndexModel
+
+<!-- ko with: home -->
+<div class="row">
+    <div class="col-md-5">
+        <h2>Kalender</h2>
+        <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=800&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=andersjuulsfirma%40gmail.com&amp;color=%23853104&amp;src=26vbs6id433v85j50c356eoqhac2jtk6%40import.calendar.google.com&amp;color=%2342104A&amp;src=tucklug84i26cf4kj56m6jafqoukv84s%40import.calendar.google.com&amp;color=%232F6309&amp;src=5r3shlj7g4geviqkv2gkgksjks%40group.calendar.google.com&amp;color=%23865A5A&amp;src=anders.plusplus%40gmail.com&amp;color=%235229A3&amp;src=andersjuulsfirma.kunde%40gmail.com&amp;color=%23182C57&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%23AB8B00&amp;src=dfmldhcfo445mr7alnt0cmtag4%40group.calendar.google.com&amp;color=%231B887A&amp;src=aoivndtpl01m1s9cvato0p5srk%40group.calendar.google.com&amp;color=%23182C57&amp;src=ed7t9gfppi3c3dppml8bdrv3kc%40group.calendar.google.com&amp;color=%235229A3&amp;src=gs0b2012%40gmail.com&amp;color=%232F6309&amp;src=da.danish%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;src=isabellaogvictoria%40gmail.com&amp;color=%23B1365F&amp;src=tinenordogandersjuul%40gmail.com&amp;color=%23AB8B00&amp;src=tranbjergskolen0b2013%40gmail.com&amp;color=%232F6309&amp;src=p%23weather%40group.v.calendar.google.com&amp;color=%232952A3&amp;src=p%23weeknum%40group.v.calendar.google.com&amp;color=%23B1440E&amp;ctz=Europe%2FCopenhagen" style="border-width:0" width="400" height="800" frameborder="0" scrolling="no"></iframe>
+    </div>
+    
+    @foreach (var schOwner in Model.SchOwners)
+    {
+        <div class="col-md-3">
+            <h2>@Html.DisplayFor(x=> schOwner.Name)</h2>
+            <table>
+                <tr>
+                    <th>Tid</th>
+                    <th>Hvad</th>
+                </tr>
+                @foreach (var schItem in schOwner.SchDay.SchItems)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => schItem.FromTime) - @Html.DisplayFor(x => schItem.ToTime)</td>
+                        <td>@Html.DisplayFor(x => schItem.What) </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+
+</div>
+
+<!-- /ko -->

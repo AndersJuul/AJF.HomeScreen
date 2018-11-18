@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AJF.HomeScreen.WebFront.Models;
@@ -59,7 +60,7 @@ namespace AJF.HomeScreen.WebFront.Controllers
                         DayOfWeek = DayOfWeek.Saturday,
                         SchItems = new[]
                         {
-                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"}
+                            new SchItem {FromTime = "", ToTime = "", What = "Weekend!"}
                         }
                     },
                     new SchDay
@@ -67,7 +68,7 @@ namespace AJF.HomeScreen.WebFront.Controllers
                         DayOfWeek = DayOfWeek.Sunday,
                         SchItems = new[]
                         {
-                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"}
+                            new SchItem {FromTime = "", ToTime = "", What = "Weekend!"}
                         }
                     }
                 }
@@ -140,7 +141,7 @@ namespace AJF.HomeScreen.WebFront.Controllers
                         DayOfWeek = DayOfWeek.Saturday,
                         SchItems = new[]
                         {
-                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"}
+                            new SchItem {FromTime = "", ToTime = "", What = "Weekend!"}
                         }
                     },
                     new SchDay
@@ -148,20 +149,23 @@ namespace AJF.HomeScreen.WebFront.Controllers
                         DayOfWeek = DayOfWeek.Sunday,
                         SchItems = new[]
                         {
-                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"}
+                            new SchItem {FromTime = "", ToTime = "", What = "Weekend!"}
                         }
                     }
                 }
             };
-            var isabellaDay = schoolScheduleIsa.SchDays.Single(x => x.DayOfWeek == DateTime.Today.DayOfWeek);
-            var victoriaDay = schoolScheduleVic.SchDays.Single(x => x.DayOfWeek == DateTime.Today.DayOfWeek);
+
+            var desiredDays = new[] {DateTime.Today.DayOfWeek, DateTime.Today.AddDays(1).DayOfWeek};
+
+            var isabellaDays =desiredDays.Select(yy=> schoolScheduleIsa.SchDays.Single(x =>x.DayOfWeek==yy)).ToArray();
+            var victoriaDays =desiredDays.Select(yy=> schoolScheduleVic.SchDays.Single(x => x.DayOfWeek == yy)).ToArray();
 
             return View(new IndexModel
             {
                 SchOwners = new[]
                 {
-                    new SchOwner {Name = "Isabella", SchDay = isabellaDay},
-                    new SchOwner {Name = "Victoria", SchDay = victoriaDay}
+                    new SchOwner {Name = "Isabella", SchDays = isabellaDays},
+                    new SchOwner {Name = "Victoria", SchDays = victoriaDays}
                 }
             });
         }

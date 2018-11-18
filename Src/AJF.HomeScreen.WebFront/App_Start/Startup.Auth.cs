@@ -22,8 +22,8 @@ namespace AJF.HomeScreen.WebFront
 
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/Token"),
-                AuthorizeEndpointPath = new PathString("/Account/Authorize"),
+                TokenEndpointPath = new PathString("/AJF.HomeScreen.WebFront/Token"),
+                AuthorizeEndpointPath = new PathString("/AJF.HomeScreen.WebFront/Account/Authorize"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 AllowInsecureHttp = true
@@ -46,7 +46,7 @@ namespace AJF.HomeScreen.WebFront
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/AJF.HomeScreen.WebFront/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

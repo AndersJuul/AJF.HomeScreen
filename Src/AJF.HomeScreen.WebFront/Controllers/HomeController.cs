@@ -21,15 +21,17 @@ namespace AJF.HomeScreen.WebFront.Controllers
                         {
                             new SchItem {FromTime = "8.00", ToTime = "8.45", What = "DA"},
                             new SchItem {FromTime = "8.45", ToTime = "9.30", What = "MAT"},
-                            new SchItem {FromTime = "9.30", ToTime = "09.55", What = "PAUSE"},
+                            new SchItem {FromTime = "9.30", ToTime = "09.55", What = "-PAUSE-"},
                             new SchItem {FromTime = "09.55", ToTime = "10.40", What = "IDR"},
                             new SchItem {FromTime = "10.40", ToTime = "11.25", What = "IDR"},
                             new SchItem {FromTime = "11.25", ToTime = "12.00", What = "PAUSE"},
                             new SchItem {FromTime = "12.00", ToTime = "12.45", What = "HIS"},
                             new SchItem {FromTime = "12.45", ToTime = "13.30", What = "TYSK"},
-                            new SchItem {FromTime = "13.30", ToTime = "13.45", What = "PAUSE"},
+                            new SchItem {FromTime = "13.30", ToTime = "13.45", What = "-PAUSE-"},
                             new SchItem {FromTime = "13.45", ToTime = "14.30", What = "STUD"},
-                            new SchItem {FromTime = "14.30", ToTime = "15.15", What = "STUD"}
+                            new SchItem {FromTime = "14.30", ToTime = "15.15", What = "STUD"},
+                            new SchItem {FromTime = "15.15", ToTime = "17.15", What = "-HJEM-"},
+                            new SchItem {FromTime = "17.15", ToTime = "19.15", What = "SVØM"}
                         }
                     },
                     new SchDay
@@ -37,7 +39,9 @@ namespace AJF.HomeScreen.WebFront.Controllers
                         DayOfWeek = DayOfWeek.Tuesday,
                         SchItems = new[]
                         {
-                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"}
+                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"},
+                            new SchItem {FromTime = "15.15", ToTime = "17.15", What = "-HJEM-"},
+                            new SchItem {FromTime = "17.15", ToTime = "19.15", What = "SVØM"}
                         }
                     },
                     new SchDay
@@ -53,7 +57,9 @@ namespace AJF.HomeScreen.WebFront.Controllers
                         DayOfWeek = DayOfWeek.Thursday,
                         SchItems = new[]
                         {
-                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"}
+                            new SchItem {FromTime = "8.00", ToTime = "8.55", What = "US"},
+                            new SchItem {FromTime = "15.15", ToTime = "17.15", What = "-HJEM-"},
+                            new SchItem {FromTime = "17.15", ToTime = "19.15", What = "SVØM"}
                         }
                     },
                     new SchDay
@@ -176,7 +182,11 @@ namespace AJF.HomeScreen.WebFront.Controllers
                 }
             };
 
-            var desiredDays = new[] {DateTime.Today.DayOfWeek, DateTime.Today.AddDays(1).DayOfWeek};
+            var desiredDays = new[]
+            {
+                DateTime.Today.DayOfWeek,
+                //DateTime.Today.AddDays(1).DayOfWeek
+            };
 
             var isabellaDays = desiredDays.Select(yy => schoolScheduleIsa.SchDays.Single(x => x.DayOfWeek == yy))
                 .ToArray();

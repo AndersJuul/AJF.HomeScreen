@@ -27,8 +27,8 @@
             @foreach (var schItem in schDay.SchItems)
             {
                 <tr>
-                    <td>@Html.DisplayFor(x => schItem.FromTime) - @Html.DisplayFor(x => schItem.ToTime)</td>
-                    <td>@Html.DisplayFor(x => schItem.What) </td>
+                    <td class="@schItem.What">@Html.DisplayFor(x => schItem.FromTime) - @Html.DisplayFor(x => schItem.ToTime)</td>
+                    <td class="@schItem.What">@Html.DisplayFor(x => schItem.What) </td>
                 </tr>
             }
         </table>

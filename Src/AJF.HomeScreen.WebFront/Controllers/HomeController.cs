@@ -237,6 +237,7 @@ namespace AJF.HomeScreen.WebFront.Controllers
 
             var isabellaDays = desiredDays.Select(yy => schoolScheduleIsa.SchDays.Single(x => x.DayOfWeek == yy))
                 .ToArray();
+
             var victoriaDays = desiredDays.Select(yy => schoolScheduleVic.SchDays.Single(x => x.DayOfWeek == yy))
                 .ToArray();
 

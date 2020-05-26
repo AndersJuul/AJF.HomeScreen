@@ -5,7 +5,6 @@ using AJF.HomeScreen.WebFront.Models;
 
 namespace AJF.HomeScreen.WebFront.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
